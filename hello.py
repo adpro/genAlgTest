@@ -2,9 +2,10 @@
 
 """
 DESCRIPTION
-    SAmple implementation of genetic algorithms - for testing purposes 
+    Sample implementation of genetic algorithms - for testing purposes
+    Python version required: Python 3.2+
 LICENSE
-    Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported 
+    Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
     (CC BY-NC-SA 3.0)
     http://creativecommons.org/licenses/by-nc-sa/3.0/
 AUTHOR
@@ -17,6 +18,8 @@ import random
 import copy
 import argparse
 import sys
+
+__version__ = '1.0.0'
 
 C_MIN = 97 #32  # ord() !
 C_MAX = 125  # ord() }
@@ -52,7 +55,7 @@ class Crate():
 class GenAlg():
     """ main class for genetic algorithm
     """
-    
+
     # PUBLIC STATIC DATA MEMBERS
     cross_rate = 1.0
     mutation_rate = 0.05
@@ -62,7 +65,7 @@ class GenAlg():
     individuals_count = 10
     population = []  # population of Crate objects
 
-    def __init__(self, top_value, crossrate=None, mutationrate=None, 
+    def __init__(self, top_value, crossrate=None, mutationrate=None,
             elitismrate=None, generations=None, individuals=None):
         if crossrate:
             self.cross_rate = float(crossrate)
@@ -75,7 +78,7 @@ class GenAlg():
         if individuals:
             self.individuals_count = int(individuals)
         self.peak = [top_value[i:i+1] for i in range(len(str(top_value)))]
-    
+
     def init_population(self, first_population):
         if isinstance(first_population, (list, tuple)):
             if isinstance(first_population[0], Crate):
@@ -215,7 +218,7 @@ class GenAlg():
         part1 = int(ind1_len / 100 * 30)
         part3 = int(ind1_len / 100 * 20)
         part2 = ind1_len - part1 - part3
-        child1 = individual1[0:part1] 
+        child1 = individual1[0:part1]
         child1.extend(individual2[part1:part1+part2])
         child1.extend(individual1[part1+part2:ind1_len])
         child2 = individual2[0:part1]
@@ -387,7 +390,7 @@ if __name__ == '__main__':
         for i in range(p.random):
             ind = []
             for j in range(11):
-                ind.append(chr(random.randrange(C_MIN, C_MAX+1))) 
+                ind.append(chr(random.randrange(C_MIN, C_MAX+1)))
             ga.add_individual(ind)
 
     # print first generation
@@ -419,14 +422,14 @@ if __name__ == '__main__':
 
         # select, crossover, mutate
         new_population = ga.breed_individuals(sum_fitness)
-       
+
         # replace least-fit population with new individuals
         ga.population = []
         for ind in new_population:
 #            if len(ind) != len(ga.peak.get_individual()):
 #                raise TypeError('Mistake in new population')
             ga.add_individual(ind)
-    
+
     if not last_gen:
         last_gen = ga.generations
 
