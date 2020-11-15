@@ -4,12 +4,6 @@
 DESCRIPTION
     Sample implementation of genetic algorithms - for testing purposes
     Python version required: Python 3.2+
-LICENSE
-    Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
-    (CC BY-NC-SA 3.0)
-    http://creativecommons.org/licenses/by-nc-sa/3.0/
-AUTHOR
-    Ales Daniel (ales.daniel@gmail.com)
 """
 
 
